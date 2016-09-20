@@ -1,0 +1,4 @@
+C:\Users\P\Desktop\prog1\bin\Debug\SPP.exe
+C:\Users\P\Desktop\prog1\bin\Debug\SPP.pdb
+C:\Users\P\Desktop\prog1\obj\x86\Debug\SPP.exe
+C:\Users\P\Desktop\prog1\obj\x86\Debug\SPP.pdb
