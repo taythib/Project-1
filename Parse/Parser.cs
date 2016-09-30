@@ -47,16 +47,78 @@ namespace Parse
   
         public Node parseExp()
         {
-            // TODO: write code for parsing an exp
-            return null;
+            return parseExp(scanner.getNextToken());
         }
-  
-        protected Node parseRest()
+
+        public Node parseExp(Token curToken)
         {
-            // TODO: write code for parsing a rest
+            // TODO: write code for parsing an exp
+            if(curToken.getType() == TokenType.LPAREN)
+            {
+                parseRest(scanner.getNextToken());
+            }
+            else if(curToken.getType() == TokenType.TRUE)
+            {
+                return new BoolLit(true);
+            }
+            else if (curToken.getType() == TokenType.FALSE)
+            {
+                return new BoolLit(false);
+            }
+            else if (curToken.getType() == TokenType.QUOTE)
+            {
+                return new Cons(new Ident("'"), parseExp());
+            }
+            else if (curToken.getType() == TokenType.INT)
+            {
+                return new IntLit(curToken.getIntVal());
+            }
+            else if (curToken.getType() == TokenType.STRING)
+            {
+                return new StringLit(curToken.getStringVal());
+            }
+            else if (curToken.getType() == TokenType.IDENT)
+            {
+                return new Ident(curToken.getName());
+            }
             return null;
         }
 
+        protected Node parseRest() {
+            return parseRest(scanner.getNextToken());
+        }
+
+        protected Node parseRest(Token t)
+        {
+            // TODO: write code for parsing a rest
+            Token curToken = t;
+            if (curToken.getType() == TokenType.RPAREN)
+                return new Nil();
+            else if(curToken == null)
+            {
+                return null;
+            }
+            else
+            {
+                return new Cons(parseExp(curToken), dotCheck(scanner.getNextToken()));
+            }
+            
+        }
+        public Node dotCheck(Token t)
+        {
+            if (t.getType() == TokenType.RPAREN)
+            {
+                return new Nil();
+            }
+            else if (t.getType() == TokenType.DOT)
+            {
+                return new Cons(parseExp(scanner.getNextToken()), dotCheck(scanner.getNextToken()));
+            }
+            else if (t == null)
+            {
+                return null;
+            }
+        }
         // TODO: Add any additional methods you might need.
     }
 }

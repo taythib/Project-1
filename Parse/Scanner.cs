@@ -76,7 +76,16 @@ namespace Parse
                 else if (ch == '"')
                 {
                     // TODO: scan a string into the buffer variable buf
-                    return new StringToken(new String(buf, 0, 0));
+                    int bufIndex = 0;
+                    ch = In.Read();
+                    do
+                    {
+                        //Console.Write((char)ch);
+                        buf[bufIndex] = (char)ch;
+                        ch = In.Read();
+                        bufIndex++;
+                    } while ((char)ch != '"');
+                    return new StringToken(new String(buf, 0, bufIndex));
                 }
 
     
@@ -85,23 +94,40 @@ namespace Parse
                 {
                     int i = ch - '0';
                     // TODO: scan the number and convert it to an integer
-
+                    int chr = In.Read();
+                    while(chr >= '0' && chr <= '9')
+                    {
+                        i *= 10;
+                        chr = chr - '0';
+                        i = i + chr;
+                        chr = In.Read();
+                    }
                     // make sure that the character following the integer
                     // is not removed from the input stream
                     return new IntToken(i);
                 }
         
                 // Identifiers
-                else if (ch >= 'A' && ch <= 'Z'
+                else if (ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch <= 'z' || ch == '!' || ch == '$' || ch == '%'
+                         || ch == '&' || ch == '*' || ch == '+' || ch == '-' || ch == '.' || ch == '/' || ch == ':'
+                         || ch == '<' || ch == '=' || ch == '>' || ch == '?' || ch == '@' || ch == '^' || ch == '_'
+                         || ch == '~'
                          // or ch is some other valid first character
                          // for an identifier
                          ) {
                     // TODO: scan an identifier into the buffer
-
+                    int bufIndex = 0;
+                    do
+                    {
+                        //Console.Write((char)ch);
+                        buf[bufIndex] = (char)ch;
+                        ch = In.Read();
+                        bufIndex++;
+                    } while ((char)ch != ' ');
+                    return new IdentToken(new String(buf, 0, bufIndex));
                     // make sure that the character following the integer
                     // is not removed from the input stream
 
-                    return new IdentToken(new String(buf, 0, 0));
                 }
     
                 // Illegal character
