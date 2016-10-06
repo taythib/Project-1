@@ -22,7 +22,8 @@ namespace Tree
             {
                 Console.Write("(");
             }
-            Console.Write("define ");
+            Console.Write("define");
+            t.getCdr().print(1, true);
         }
     }
 }
