@@ -83,41 +83,57 @@ namespace Parse
             }
             return null;
         }
-
+        
+        // No lookahead
         protected Node parseRest() {
             return parseRest(scanner.getNextToken());
         }
 
+        // 1 token lookahead
         protected Node parseRest(Token t)
         {
-            // TODO: write code for parsing a rest
+            //// TODO: write code for parsing a rest
             Token curToken = t;
-            if (curToken.getType() == TokenType.RPAREN)
-                return new Nil();
-            else if(curToken == null)
+            Token next = scanner.getNextToken();
+            if (curToken.getType() == TokenType.LPAREN)
             {
-                return null;
+                if (next.getType() == TokenType.RPAREN)
+                {
+                    return new Cons(new Nil(), parseRest());
+                }
+                else
+                    return new Cons(new Cons(parseExp(next), parseRest()), parseRest());
+            }
+            else if (next.getType() == TokenType.RPAREN)
+                return new Cons(parseExp(curToken), new Nil());
+            else if (curToken.getType() == TokenType.DOT)
+                return parseExp();
+            else if (next.getType() == TokenType.DOT)
+            {
+                return new Cons(parseExp(curToken), parseRest());
             }
             else
-            {
-                return new Cons(parseExp(curToken), dotCheck(scanner.getNextToken()));
-            }
-            
+                return new Cons(parseExp(curToken), new Cons(parseExp(next), parseRest()));
         }
-        public Node dotCheck(Token t)
+
+        // Checks to see if lookahead token is a dot or a LPAREN for a new list
+        public Node dotCheck(Token t, Token n)
         {
-            if (t.getType() == TokenType.RPAREN)
+            if (n.getType() == TokenType.DOT)
             {
-                return new Nil();
+                return new Cons(parseExp(t), parseExp());
             }
-            else if (t.getType() == TokenType.DOT)
+            else if (t.getType() == TokenType.LPAREN)
             {
-                return new Cons(parseExp(scanner.getNextToken()), dotCheck(scanner.getNextToken()));
+                return parseRest(n);
             }
             else if (t == null)
             {
                 return null;
             }
+            else
+                return parseExp(t);
+
         }
         // TODO: Add any additional methods you might need.
     }

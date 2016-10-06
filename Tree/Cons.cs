@@ -29,6 +29,44 @@ namespace Tree
         {
             // TODO: implement this function and any helper functions
             // you might need.
+            if (car.isSymbol())
+            {
+                if (((Ident)car).getName() == "quote")
+                {
+                    form = new Quote();
+                }
+                else if (((Ident)car).getName() == "lambda")
+                {
+                    form = new Lambda();
+                }
+                else if (((Ident)car).getName() == "begin")
+                {
+                    form = new Begin();
+                }
+                else if (((Ident)car).getName() == "if")
+                {
+                    form = new If();
+                }
+                else if (((Ident)car).getName() == "let")
+                {
+                    form = new Let();
+                }
+                else if (((Ident)car).getName() == "cond")
+                {
+                    form = new Cond();
+                }
+                else if (((Ident)car).getName() == "define")
+                {
+                    form = new Define();
+                }
+                else if (((Ident)car).getName() == "set!")
+                {
+                    form = new Set();
+                }
+                else
+                    form = new Regular();
+
+            }
         }
  
         public override void print(int n)

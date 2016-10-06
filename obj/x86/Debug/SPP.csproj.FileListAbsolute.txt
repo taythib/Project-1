@@ -6,3 +6,4 @@ C:\Users\Taylor\Desktop\Project-1\obj\x86\Debug\SPP.exe
 C:\Users\Taylor\Desktop\Project-1\obj\x86\Debug\SPP.pdb
 C:\Users\Taylor\Desktop\Project-1\bin\Debug\SPP.exe
 C:\Users\Taylor\Desktop\Project-1\bin\Debug\SPP.pdb
+C:\Users\Taylor\Desktop\Project-1\obj\x86\Debug\SPP.csprojResolveAssemblyReference.cache
