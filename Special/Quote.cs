@@ -17,8 +17,14 @@ namespace Tree
             {
                 Console.Write(" ");
             }
-            Console.Write("'");
-            t.getCdr().print(0, false);
+            Node cdr = t.getCdr();
+            Node car = t.getCar();
+            while (!cdr.isNull())
+            {
+                cdr.getCar().print(0, true);
+                Console.Write(" ");
+                cdr = cdr.getCdr();
+            }
         }
     }
 }

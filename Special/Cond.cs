@@ -27,11 +27,11 @@ namespace Tree
                 {
                     Console.Write(" ");
                 }
-                cdr.getCar().print(0, false);
+                cdr.getCar().print(0, true);
                 Console.WriteLine();
                 cdr = cdr.getCdr();
             }
-            Console.Write(")");
+            cdr.print(0, true);
         }
     }
 }

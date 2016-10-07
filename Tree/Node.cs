@@ -1,5 +1,7 @@
 // Node -- Base class for parse tree node objects
 
+using System;
+
 namespace Tree
 {
     public class Node
@@ -43,8 +45,16 @@ namespace Tree
         // TODO: Report an error in these default methods and implement them
         // in class Cons.  After setCar, a Cons cell needs to be `parsed' again
         // using parseList.
-        public virtual Node getCar() { return null; }
-        public virtual Node getCdr() { return null; }
+        public virtual Node getCar()
+        {
+            Console.WriteLine("Default Node type does not contain car!");
+            return null;
+        }
+        public virtual Node getCdr()
+        {
+            Console.WriteLine("Default Node type does not contain cdr!");
+            return null;
+        }
         public virtual void setCar(Node a) { }
         public virtual void setCdr(Node d) { }
     }

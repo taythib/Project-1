@@ -94,13 +94,13 @@ namespace Parse
                 {
                     int i = ch - '0';
                     // TODO: scan the number and convert it to an integer
-                    int chr = In.Read();
+                    int chr = In.Peek();
                     while(chr >= '0' && chr <= '9')
                     {
                         i *= 10;
                         chr = chr - '0';
                         i = i + chr;
-                        chr = In.Read();
+                        chr = In.Peek();
                     }
                     // make sure that the character following the integer
                     // is not removed from the input stream

@@ -32,6 +32,8 @@ namespace Tree
         {
             car = a; ;
         }
+        public override bool isPair() { return true; }  // Cons
+
         // parseList() `parses' special forms, constructs an appropriate
         // object of a subclass of Special, and stores a pointer to that
         // object in variable form.  It would be possible to fully parse
@@ -46,7 +48,7 @@ namespace Tree
             // you might need.
             if (car.isSymbol())
             {
-                if (((Ident)car).getName() == "quote")
+                if (((Ident)car).getName() == "quote" || ((Ident)car).getName() == "'")
                 {
                     form = new Quote();
                 }
@@ -80,8 +82,9 @@ namespace Tree
                 }
                 else
                     form = new Regular();
-
             }
+            else
+                form = new Regular();
         }
  
         public override void print(int n)

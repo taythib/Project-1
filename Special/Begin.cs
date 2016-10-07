@@ -40,11 +40,14 @@ namespace Tree
                 {
                     Console.Write(" ");
                 }
-                cdr.getCar().print(0, false);
+                if(cdr.getCar().isPair())
+                    cdr.getCar().print(0, false);
+                else
+                    cdr.getCar().print(0, true);
                 Console.WriteLine();
                 cdr = cdr.getCdr();
             }
-            Console.Write(")");
+            cdr.print(0, true);
 
         }
     }

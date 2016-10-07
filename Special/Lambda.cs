@@ -21,13 +21,16 @@ namespace Tree
             Node cdr = t.getCdr();
             Node car = t.getCar();
             Node cddr = t.getCdr().getCdr();
-            Console.WriteLine("(lambda");
+            Console.Write("(lambda ");
             cdr.getCar().print(0, false);
+            Console.WriteLine();
             while (!cddr.isNull())
             {
-                cddr.print(n + 4, true);
+                cddr.getCar().print(n + 4, true);
                 cddr = cddr.getCdr();
+                Console.WriteLine();
             }
+            cddr.print(n, true);
         }
     }
 }

@@ -19,8 +19,6 @@ namespace Tree
             }
             Console.Write("(set!");
             t.getCdr().print(0, true);
-            //t.getCdr().getCdr().print(0, true);
-            Console.WriteLine(")");
         }
     }
 }

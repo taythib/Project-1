@@ -19,7 +19,7 @@ namespace Tree
                 Console.Write(" ");
 
             if (p)
-                Console.WriteLine(")");
+                Console.Write(")");
             else
                 Console.WriteLine("()");
         }

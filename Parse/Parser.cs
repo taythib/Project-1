@@ -55,7 +55,7 @@ namespace Parse
             // TODO: write code for parsing an exp
             if(curToken.getType() == TokenType.LPAREN)
             {
-                parseRest(scanner.getNextToken());
+                return parseRest(scanner.getNextToken());
             }
             else if(curToken.getType() == TokenType.TRUE)
             {
@@ -94,6 +94,8 @@ namespace Parse
         {
             //// TODO: write code for parsing a rest
             Token curToken = t;
+            if (curToken.getType() == TokenType.RPAREN)
+                return new Nil();
             Token next = scanner.getNextToken();
             if (curToken.getType() == TokenType.LPAREN)
             {

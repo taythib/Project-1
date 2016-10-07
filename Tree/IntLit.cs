@@ -15,7 +15,12 @@ namespace Tree
 
         public override void print(int n)
         {
-            Console.WriteLine(intVal);
+            for (int i = 0; i < n; i++)
+                Console.Write(" ");
+            Console.Write(intVal);
         }
+        public override bool isNumber() { return true; }  // IntLit
+
     }
+
 }

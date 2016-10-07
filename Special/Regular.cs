@@ -26,7 +26,9 @@ namespace Tree
             car.print(n, true);
             if (cdr.isPair() || cdr.isNull())
             {
-                if (cdr.getCar().isPair())
+                if(cdr.isNull())
+                    cdr.print(n, true);
+                else if (cdr.getCar().isPair())
                     cdr.print(n, false);
                 else
                     cdr.print(n, true);
