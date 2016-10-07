@@ -13,8 +13,22 @@ namespace Tree
 
         public override void print(Node t, int n, bool p)
         {
-            // TODO: Implement this function.
-  	}
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write(" ");
+            }
+
+            Node cdr = t.getCdr();
+            Node car = t.getCar();
+            Node cddr = t.getCdr().getCdr();
+            Console.WriteLine("(lambda");
+            cdr.getCar().print(0, false);
+            while (!cddr.isNull())
+            {
+                cddr.print(n + 4, true);
+                cddr = cddr.getCdr();
+            }
+        }
     }
 }
 

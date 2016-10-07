@@ -13,18 +13,25 @@ namespace Tree
 
         public override void print(Node t, int n, bool p)
         {
-            while (n > 0)
+            for (int i = 0; i < n; i++)
             {
                 Console.Write(" ");
-                n--;
             }
-            if (p == false)
+
+            Node cdr = t.getCdr();
+            Console.WriteLine("(cond");
+            n = n + 4;
+            while (!cdr.isNull())
             {
-                Console.Write("(");
+                for (int i = 0; i < n; i++)
+                {
+                    Console.Write(" ");
+                }
+                cdr.getCar().print(0, false);
+                Console.WriteLine();
+                cdr = cdr.getCdr();
             }
-            Console.Write("cond");
-            Console.WriteLine();
-            t.getCdr().print(n + 4, true);
+            Console.Write(")");
         }
     }
 }

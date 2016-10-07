@@ -13,17 +13,14 @@ namespace Tree
 	
         public override void print(Node t, int n, bool p)
         {
-            while (n > 0)
+            for (int i = 0; i < n; i++)
             {
                 Console.Write(" ");
-                n--;
             }
-            if (p == false)
-            {
-                Console.Write("(");
-            }
-            Console.Write("set!");
-            t.getCdr().print(1, true);
+            Console.Write("(set!");
+            t.getCdr().print(0, true);
+            //t.getCdr().getCdr().print(0, true);
+            Console.WriteLine(")");
         }
     }
 }
