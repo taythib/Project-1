@@ -53,11 +53,20 @@ namespace Parse
         public Node parseExp(Token curToken)
         {
             // TODO: write code for parsing an exp
-            if(curToken.getType() == TokenType.LPAREN)
+            if (curToken == null)
+                return null;
+            else if (curToken.getType() == TokenType.LPAREN)
             {
-                return parseRest(scanner.getNextToken());
+                Token temp = scanner.getNextToken();
+                if(temp.getType() == TokenType.DOT)
+                {
+                    Console.WriteLine("Parse error: illegal dot in expression");
+                    return parseExp();
+                }
+
+                return parseRest(temp);
             }
-            else if(curToken.getType() == TokenType.TRUE)
+            else if (curToken.getType() == TokenType.TRUE)
             {
                 return new BoolLit(true);
             }
@@ -81,6 +90,16 @@ namespace Parse
             {
                 return new Ident(curToken.getName());
             }
+            else if (curToken.getType() == TokenType.RPAREN)
+            {
+                Console.WriteLine("Parse error: illegal right parenthesis in expression");
+                return parseExp();
+            }
+            else if (curToken.getType() == TokenType.DOT)
+            {
+                Console.WriteLine("Parse error: illegal dot in expression");
+                return parseExp();
+            }
             return null;
         }
         
@@ -94,14 +113,23 @@ namespace Parse
         {
             //// TODO: write code for parsing a rest
             Token curToken = t;
+            if (curToken == null)
+                return null;
             if (curToken.getType() == TokenType.RPAREN)
                 return new Nil();
             Token next = scanner.getNextToken();
             if (curToken.getType() == TokenType.LPAREN)
             {
+                if (next == null)
+                    return null;
                 if (next.getType() == TokenType.RPAREN)
                 {
                     return new Cons(new Nil(), parseRest());
+                }
+                else if (next.getType() == TokenType.DOT)
+                {
+                    Console.WriteLine("Parse error: illegal dot in expression");
+                    return parseExp();
                 }
                 else
                     return new Cons(new Cons(parseExp(next), parseRest()), parseRest());
@@ -109,34 +137,22 @@ namespace Parse
             else if (next.getType() == TokenType.RPAREN)
                 return new Cons(parseExp(curToken), new Nil());
             else if (curToken.getType() == TokenType.DOT)
-                return parseExp();
+            {
+                Node temp =  parseExp(next);
+                scanner.getNextToken();
+                return temp;
+            }
             else if (next.getType() == TokenType.DOT)
             {
-                return new Cons(parseExp(curToken), parseRest());
+                Node temp = new Cons(parseExp(curToken), parseExp());
+                scanner.getNextToken();
+                return temp;
             }
             else
                 return new Cons(parseExp(curToken), new Cons(parseExp(next), parseRest()));
         }
 
-        // Checks to see if lookahead token is a dot or a LPAREN for a new list
-        public Node dotCheck(Token t, Token n)
-        {
-            if (n.getType() == TokenType.DOT)
-            {
-                return new Cons(parseExp(t), parseExp());
-            }
-            else if (t.getType() == TokenType.LPAREN)
-            {
-                return parseRest(n);
-            }
-            else if (t == null)
-            {
-                return null;
-            }
-            else
-                return parseExp(t);
 
-        }
         // TODO: Add any additional methods you might need.
     }
 }

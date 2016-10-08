@@ -21,7 +21,9 @@ namespace Tree
             Node cdr = t.getCdr();
             if (cdr.getCar().isPair())
             {
-                Console.Write("(define ");
+                Console.Write("(");
+                car.print(0, true);
+                Console.Write(" ");
                 cdr.getCar().print(0, false);
                 Console.WriteLine();
                 cdr = cdr.getCdr();

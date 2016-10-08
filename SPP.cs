@@ -54,8 +54,9 @@ public class SPP
         {
             root.print(0);
             root = parser.parseExp();
+            if(root == null)
+                Console.WriteLine();
         }
-
         return 0;
     }
 }

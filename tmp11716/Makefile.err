@@ -1,5 +1,0 @@
-
-Unhandled Exception: System.IndexOutOfRangeException: Index was outside the bounds of the array.
-   at Parse.Scanner.getNextToken()
-   at Parse.Parser.parseExp()
-   at SPP.Main(String[] args)

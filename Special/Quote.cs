@@ -17,17 +17,10 @@ namespace Tree
             {
                 Console.Write(" ");
             }
-            Console.Write("'");
             Node cdr = t.getCdr();
             Node car = t.getCar();
+            car.print(0, true);
             cdr.print(0, false);
-            
-            /*while (!cdr.isNull())
-            {
-                cdr.print(0, false);
-                Console.Write(" ");
-                cdr = cdr.getCdr();
-            }*/
         }
     }
 }

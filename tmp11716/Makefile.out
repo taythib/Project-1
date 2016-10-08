@@ -1,7 +1,0 @@
-mcsSPP.csTokens/*.csParse/*.csTree/*.csSpecial/*.cs
-
-clean:
-	@rm-f*~*/*~
-
-veryclean:
-	@rm-fSPP.exe*~

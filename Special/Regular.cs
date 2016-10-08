@@ -39,7 +39,7 @@ namespace Tree
             }
             else
             {
-                Console.Write(". ");
+                Console.Write(".");
                 cdr.print(n, true);
                 Console.Write(")");
             }
