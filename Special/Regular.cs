@@ -19,19 +19,23 @@ namespace Tree
             }
             if (!p)
                 Console.Write("(");
-            else
-                Console.Write(" ");
             Node cdr = t.getCdr();
             Node car = t.getCar();
-            car.print(n, true);
+            if(car.isPair())
+            {
+                car.print(0, false);
+            }
+            else
+                car.print(0, true);
             if (cdr.isPair() || cdr.isNull())
             {
-                if(cdr.isNull())
-                    cdr.print(n, true);
-                else if (cdr.getCar().isPair())
-                    cdr.print(n, false);
+                if (cdr.isNull())
+                    cdr.print(0, true);
                 else
-                    cdr.print(n, true);
+                {
+                    Console.Write(" ");
+                    cdr.print(0, true);
+                }
             }
             else
             {

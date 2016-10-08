@@ -21,18 +21,18 @@ namespace Tree
             Node cdr = t.getCdr();
             if (cdr.getCar().isPair())
             {
-                Console.WriteLine("(define");
+                Console.Write("(define ");
+                cdr.getCar().print(0, false);
+                Console.WriteLine();
+                cdr = cdr.getCdr();
                 n = n + 4;
                 while (!cdr.isNull())
                 {
-                    for (int i = 0; i < n; i++)
-                    {
-                        Console.Write(" ");
-                    }
-                    cdr.getCar().print(0, false);
+                    cdr.getCar().print(n, false);
                     Console.WriteLine();
                     cdr = cdr.getCdr();
                 }
+                Console.WriteLine(")");
             }
             else
             {

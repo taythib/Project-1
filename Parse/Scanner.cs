@@ -95,12 +95,13 @@ namespace Parse
                     int i = ch - '0';
                     // TODO: scan the number and convert it to an integer
                     int chr = In.Peek();
-                    while(chr >= '0' && chr <= '9')
+                    while(In.Peek() >= '0' && In.Peek() <= '9')
                     {
+                        chr = In.Read();
                         i *= 10;
                         chr = chr - '0';
                         i = i + chr;
-                        chr = In.Peek();
+
                     }
                     // make sure that the character following the integer
                     // is not removed from the input stream
@@ -117,13 +118,21 @@ namespace Parse
                          ) {
                     // TODO: scan an identifier into the buffer
                     int bufIndex = 0;
-                    do
+                    while (ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch <= 'z' || ch == '!' || ch == '$' || ch == '%'
+                         || ch == '&' || ch == '*' || ch == '+' || ch == '-' || ch == '.' || ch == '/' || ch == ':'
+                         || ch == '<' || ch == '=' || ch == '>' || ch == '?' || ch == '@' || ch == '^' || ch == '_'
+                         || ch == '~')
                     {
                         //Console.Write((char)ch);
                         buf[bufIndex] = (char)ch;
-                        ch = In.Read();
+                        ch = In.Peek();
+                        if (ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch <= 'z' || ch == '!' || ch == '$' || ch == '%'
+                         || ch == '&' || ch == '*' || ch == '+' || ch == '-' || ch == '.' || ch == '/' || ch == ':'
+                         || ch == '<' || ch == '=' || ch == '>' || ch == '?' || ch == '@' || ch == '^' || ch == '_'
+                         || ch == '~')
+                            ch = In.Read();
                         bufIndex++;
-                    } while ((char)ch != ' ');
+                    };
                     return new IdentToken(new String(buf, 0, bufIndex));
                     // make sure that the character following the integer
                     // is not removed from the input stream

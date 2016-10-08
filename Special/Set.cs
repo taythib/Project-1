@@ -17,7 +17,7 @@ namespace Tree
             {
                 Console.Write(" ");
             }
-            Console.Write("(set!");
+            Console.Write("(set! ");
             t.getCdr().print(0, true);
         }
     }

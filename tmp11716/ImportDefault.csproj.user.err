@@ -1,0 +1,7 @@
+
+Unhandled Exception: System.NullReferenceException: Object reference not set to an instance of an object.
+   at Tree.Quote.print(Node t, Int32 n, Boolean p)
+   at Tree.Cons.print(Int32 n)
+   at SPP.Main(String[] args)
+bash: line 1: 11872 Done                    tail -n +2 ImportDefault.csproj.user
+     12128 Segmentation fault      | /home/Taylor-local/desktop/project-1/SPP.exe

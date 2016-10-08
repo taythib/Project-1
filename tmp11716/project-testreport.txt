@@ -1,0 +1,60 @@
+Running tests:
+ImportDefault.csproj.user: FAIL
+﻿<?xml version="1.0" encoding="utf-8"?>
+-----
+../runtests: line 86: diff: command not found
+-----
+ImportDefault.csproj.user Errors:
+-----
+../runtests: line 88: diff: command not found
+-----
+Makefile: FAIL
+all:
+-----
+../runtests: line 86: diff: command not found
+-----
+Makefile Errors:
+-----
+../runtests: line 88: diff: command not found
+-----
+SPP.cs: FAIL
+// SPP -- The main program of the Scheme pretty printer.
+-----
+../runtests: line 86: diff: command not found
+-----
+SPP.cs Errors:
+-----
+../runtests: line 88: diff: command not found
+-----
+SPP.csproj: FAIL
+﻿<?xml version="1.0" encoding="utf-8"?>
+-----
+../runtests: line 86: diff: command not found
+-----
+SPP.csproj Errors:
+-----
+../runtests: line 88: diff: command not found
+-----
+SPP.csproj.user: FAIL
+﻿<?xml version="1.0" encoding="utf-8"?>
+-----
+../runtests: line 86: diff: command not found
+-----
+SPP.csproj.user Errors:
+-----
+../runtests: line 88: diff: command not found
+-----
+SPP.sln: FAIL
+﻿
+-----
+../runtests: line 86: diff: command not found
+-----
+SPP.sln Errors:
+-----
+../runtests: line 88: diff: command not found
+-----
+
+0 tests succeeded
+0 tests were formatted incorrectly
+6 tests failed
+6 tests had errors

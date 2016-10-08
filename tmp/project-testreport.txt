@@ -1,0 +1,19 @@
+Running tests:
+ImportDefault.csproj.user: FAIL
+﻿<?xml version="1.0" encoding="utf-8"?>
+-----
+../runtests: line 86: diff: command not found
+-----
+ImportDefault.csproj.user Errors:
+-----
+../runtests: line 88: diff: command not found
+-----
+Makefile: FAIL
+all:
+-----
+../runtests: line 86: diff: command not found
+-----
+Makefile Errors:
+-----
+../runtests: line 88: diff: command not found
+-----

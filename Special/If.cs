@@ -26,7 +26,10 @@ namespace Tree
             Console.WriteLine();
             while (!cddr.isNull())
             {
-                cddr.getCar().print(n + 4, true);
+                if(cddr.getCar().isPair())
+                    cddr.getCar().print(n + 4, false);
+                else
+                    cddr.getCar().print(n + 4, true);
                 cddr = cddr.getCdr();
                 Console.WriteLine();
             }
