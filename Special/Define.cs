@@ -38,7 +38,7 @@ namespace Tree
             }
             else
             {
-                Console.Write("(define");
+                Console.Write("(define ");
                 t.getCdr().print(0, true);
             }
         }
