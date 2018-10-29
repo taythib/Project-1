@@ -2,7 +2,6 @@ Project 1
 
 Group members:
 Taylor Thibodeaux
-Charles Thistlethwaite
 
 In our program, our scanner read in tokens and used the parser class to translate them into node binary trees. There are two main methods in the 
 parser class: parseExp() and parseRest(). parseExp() is Responsible for creating non-cons nodes while parseRest() divided up tokens and made cons
